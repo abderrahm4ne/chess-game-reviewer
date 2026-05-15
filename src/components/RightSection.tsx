@@ -45,13 +45,13 @@ export default function RightSection(props: Props) {
     <div className="flex flex-1 overflow-hidden bg-primary2-background">
 
       {/* Center */}
-      <div className="flex-1 flex flex-col items-center justify-center gap-2.5 p-6 overflow-hidden">
+      <div className="flex-1 flex flex-col items-center gap-2.5 p-6 overflow-hidden">
 
         {/* Top player */}
         <PlayerRow name={topPlayer} rating={topRating} color={topColor} />
 
         {/* Eval bar + board */}
-        <div className="flex items-start gap-3">
+        <div className="flex items-center gap-3">
           <EvalBar winChance={winChance} />
           {game
             ? <Board fen={fen} flipped={flipped} lastMove={lastMove} bestMove={analysis ? { from: analysis.from, to: analysis.to } : null} />
@@ -100,8 +100,7 @@ function PlayerRow({ name, rating, color }: { name?: string, rating?: number, co
 
 function EmptyBoard() {
   return (
-    <div className="flex items-center justify-center bg-sec border border-border-dark-background rounded"
-      style={{ width: 680, height: 680 }}>
+    <div className="flex items-center justify-center bg-sec border border-border-dark-background rounded 2xl:w-150 2xl:h-150 w-110 h-110">
       <div className="text-center text-muted">
         <div className="text-6xl opacity-50 mb-4">♟</div>
         <p className="text-md text-white font-text-rubik">Select a game to begin</p>

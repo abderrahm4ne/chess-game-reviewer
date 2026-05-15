@@ -3,7 +3,7 @@ import type { ChessMove } from '../hooks/useChessGame'
 
 interface Props {
   moves:      ChessMove[]
-  currentIdx: number           // 0 = start, 1 = after move 0, …
+  currentIdx: number
   onGoTo:     (idx: number) => void
 }
 
@@ -32,9 +32,9 @@ export default function MoveList({ moves, currentIdx, onGoTo }: Props) {
         key={plyIdx}
         ref={active ? activeRef : undefined}
         onClick={() => onGoTo(plyIdx + 1)}
-        className={`px-2 py-0.5 rounded text-sm font-mono font-medium transition-colors text-left
+        className={`px-2 py-0.5 rounded text-sm font-inter transition-colors text-left
           ${active
-            ? 'bg-gold text-black'
+            ? 'bg-gold text-primary-text'
             : 'text-tx hover:bg-surface2'}`}
       >
         {move.san}
@@ -43,10 +43,10 @@ export default function MoveList({ moves, currentIdx, onGoTo }: Props) {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto px-2 py-2 space-y-0.5">
+    <div className="flex-1 overflow-y-auto px-2 py-2 space-y-0.5 text-white">
       {pairs.map(([w, b], pairIdx) => (
-        <div key={pairIdx} className="flex items-center gap-1">
-          <span className="w-7 text-[11px] text-muted font-mono select-none text-right flex-shrink-0">
+        <div key={pairIdx} className="flex items-center gap-4">
+          <span className="w-7 font-inter select-none text-sm text-right ">
             {pairIdx + 1}.
           </span>
           {moveBtn(w, pairIdx * 2)}

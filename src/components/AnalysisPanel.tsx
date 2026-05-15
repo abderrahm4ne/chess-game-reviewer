@@ -21,8 +21,8 @@ export default function AnalysisPanel({ analysis, isAnalyzing, moves, currentIdx
     <div className="min-w-[288px] border-l border-border flex flex-col w-80 bg-primary-background">
 
       {/* Analysis header */}
-      <div className="px-4 py-3 border-b border-border ">
-        <p className="text-md text-white font-text-inter tracking-widest uppercase mb-3">Stockfish Analysis</p>
+      <div className="px-4 py-3 border-b border-border-dark-background/20 ">
+        <p className="text-sm text-white font-text-inter tracking-tight uppercase mb-3 font-bold">Stockfish Analysis</p>
 
         {/* Big eval */}
         <div className="flex items-end gap-3 mb-3">
@@ -30,7 +30,7 @@ export default function AnalysisPanel({ analysis, isAnalyzing, moves, currentIdx
             {isAnalyzing ? '…' : evalStr}
           </span>
           {analysis && (
-            <span className="text-[11px] text-muted mb-1 font-mono">depth {analysis.depth}</span>
+            <span className="text-[11px] text-gray-400 mb-1 font-mono">depth {analysis.depth}</span>
           )}
         </div>
 
@@ -45,8 +45,8 @@ export default function AnalysisPanel({ analysis, isAnalyzing, moves, currentIdx
         {/* Best move + continuation */}
         {analysis && !isAnalyzing && (
           <div className="space-y-1">
-            <p className="text-xs font-rubik text-white">
-              <span >Best: </span>
+            <p className="text-sm font-rubik text-white">
+              <span >Best Move: </span>
               <span className="text-green-700 ">{analysis.san}</span>
             </p>
             {analysis.continuationArr?.length > 0 && (
@@ -59,19 +59,19 @@ export default function AnalysisPanel({ analysis, isAnalyzing, moves, currentIdx
 
         {isAnalyzing && (
           <div className="flex items-center gap-2 text-xs text-gray-400">
-            <span className="inline-block w-3 h-3 border border-gold border-t-transparent rounded-full animate-spin" />
+            <span className="inline-block w-3 h-3 border border-white border-t-transparent rounded-full animate-spin" />
             Analyzing position…
           </div>
         )}
 
         {!analysis && !isAnalyzing && (
-          <p className="text-xs text-muted">Click ⚡ Analyze to evaluate this position.</p>
+          <p className="text-xs text-gray-400">Click Analyze to evaluate this position.</p>
         )}
       </div>
 
       {/* Move list */}
-      <div className="px-3 py-2 border-b border-border flex-shrink-0">
-        <p className="text-[10px] tracking-widest uppercase text-muted">Move List</p>
+      <div className="px-3 py-2 border-b border-border-dark-background/20">
+        <p className="text-[10px] tracking-widest uppercase text-gray-300">Move List</p>
       </div>
 
       <MoveListInline moves={moves} currentIdx={currentIdx} onGoTo={onGoTo} />
